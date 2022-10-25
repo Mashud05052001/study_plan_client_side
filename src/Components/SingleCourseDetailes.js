@@ -3,11 +3,12 @@ import { useLoaderData } from 'react-router-dom';
 
 const SingleCourseDetailes = () => {
     const information = useLoaderData();
-    console.log('info', information);
+    const { _id, detailes, image, tools, name } = information;
+
     return (
-        <div>
-            this is single page application
-        </div>
+        <div className={`bg-[url('https://www.mindinventory.com/blog/wp-content/uploads/2021/03/frontend-development-tools.png')]`} >
+            <h1>mahi</h1>
+        </div >
     );
 };
 
