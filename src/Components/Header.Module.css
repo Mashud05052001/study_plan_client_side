@@ -1,0 +1,21 @@
+.active-navlink {
+    position: relative;
+    color: #1b689c;
+    font-weight: 500;
+    margin: 0 10px;
+}
+
+.active-navlink:before {
+    content: '';
+    position: absolute;
+    height: 4px;
+    width: 100%;
+    background: rgba(27, 104, 156, 1);
+    bottom: -7px;
+    border-radius: 10px;
+}
+
+.deactive-navlink {
+    margin: 0 10px;
+
+}
