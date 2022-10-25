@@ -5,6 +5,7 @@ import websiteLogo from '../Images/logo.jpg'
 import Toggle from 'react-toggle'
 
 const Header = () => {
+    // const {user}
     return (
         <section className='h-20 bg-gray-300'>
             <div className='flex justify-between items-center md:w-10/12 px-3 md:px-0 mx-auto h-full'>
@@ -24,6 +25,9 @@ const Header = () => {
                     </NavLink>
                     <NavLink to='/blog' className={({ isActive }) => isActive ? 'active-navlink' : 'deactive-navlink'}>
                         <span className=' mx-2 '>Blog</span>
+                    </NavLink>
+                    <NavLink to='/login' className={({ isActive }) => isActive ? 'active-navlink' : 'deactive-navlink'}>
+                        <span className=' mx-2 '>Login</span>
                     </NavLink>
 
 
