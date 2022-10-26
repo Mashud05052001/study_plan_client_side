@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Blog from "../Components/Blog";
+import Cartsection from "../Components/Cartsection";
 import Courses from "../Components/Courses";
 import ErrorPage from "../Components/ErrorPage";
 import Faq from "../Components/Faq";
@@ -8,6 +9,8 @@ import Login from "../Components/Login";
 import Main from "../Components/Main";
 import Register from "../Components/Register";
 import SingleCourseDetailes from "../Components/SingleCourseDetailes";
+import PrivateRoute from "./PrivateRoute";
+
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +32,12 @@ export const router = createBrowserRouter([
             { path: '/blog', element: <Blog /> },
             { path: '/login', element: <Login /> },
             { path: '/register', element: <Register /> },
+            { path: '/register', element: <Register /> },
+            {
+                path: '/cart/:id', element: <PrivateRoute><Cartsection /></PrivateRoute>,
+                loader: ({ params }) => fetch(`https://study-plan-backend.vercel.app/courses/${params.id}`)
+            },
+
 
 
         ]

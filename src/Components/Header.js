@@ -6,10 +6,11 @@ import Toggle from 'react-toggle'
 import { AuthContext } from '../Firebase/UserContext';
 import toast, { Toaster } from 'react-hot-toast';
 import { CgProfile } from 'react-icons/cg';
+import Spinner from './Spinner';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
-    // console.log(user.auth.currentUser);
+    console.log(user);
     const photo = user?.auth?.currentUser?.photoURL;
     const name = user?.auth?.currentUser?.displayName;
     const handleLogout = () => {
@@ -21,6 +22,7 @@ const Header = () => {
                 <div className='flex items-center '>
                     <img src={websiteLogo} className='w-12 rounded-full' alt="" />
                     <h1 className='font-[cursive] text-xl text-[#1b689c] font-semibold md:ml-4'><Link to='/home'>M4 Learning</Link></h1>
+
                 </div>
                 <div className='text-sm  flex items-center'>
                     <NavLink to='/home' className={({ isActive }) => isActive ? 'active-navlink' : 'deactive-navlink'}>
@@ -37,7 +39,7 @@ const Header = () => {
                     </NavLink>
 
                     {
-                        user?.uid ?
+                        user ?
                             <span className=' mx-2 cursor-pointer' onClick={handleLogout}>Logout</span>
                             :
                             <NavLink to='/login' className={({ isActive }) => isActive ? 'active-navlink' : 'deactive-navlink'}>
@@ -54,7 +56,7 @@ const Header = () => {
                         <div title={`${name}`}>
                             {
                                 photo ?
-                                    <img src={photo} alt="" className='w-8 h-8 rounded-full ml-5 cursor-pointer' />
+                                    <img src={photo} alt="...Sorry" className='w-8 h-8 rounded-full ml-5 cursor-pointer' />
                                     :
                                     <CgProfile className='w-8 h-8 rounded-full ml-5 cursor-pointer' />
                             }

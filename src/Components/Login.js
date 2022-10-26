@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoginRegisterAnimation from './LoginRegisterAnimation';
 import { FaRegEye, FaRegEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
@@ -14,6 +14,9 @@ const Login = () => {
     const [error, setError] = useState('');
     const { login, googleLogin, githubLogin, emailVerification } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+    //user password login
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -24,7 +27,7 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             if (user.emailVerified) {
-                navigate('/home');
+                navigate(from);
                 form.reset();
             }
             else {
@@ -36,13 +39,14 @@ const Login = () => {
     // google login
     const handleGoogle = () => {
         googleLogin().then(result => {
-            navigate('/home');
+            navigate(from);
         }).catch(err => setError(err));
     }
     // github login
     const handleGithub = () => {
         githubLogin().then(result => {
-            navigate('/home');
+            navigate(from);
+            console.log(result.user);
         }).catch(err => setError(err));
     }
     return (
