@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import LoginRegisterAnimation from './LoginRegisterAnimation';
 import { FaRegEye, FaRegEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
@@ -12,7 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const Login = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState('');
-    const { login, googleLogin, githubLogin, emailVerification } = useContext(AuthContext);
+    const { login, googleLogin, githubLogin, emailVerification, resetPassword } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || "/";
@@ -48,10 +48,34 @@ const Login = () => {
             navigate(from);
         }).catch(err => setError(err));
     }
-    return (
-        <section className='lg:w-10/12  w-full mx-auto  flex flex-col lg:flex-row justify-center items-center'>
+    // password forgot email
+    const updatedEmail = useRef(null);
+    const handleForgotPassword = () => {
+        const email = prompt('Enter your email : ');
+        if (email.endsWith('@gmail.com')) {
+            resetPassword(email).then(() => {
+                toast.success('Please check your google to reset the password.', {
+                    style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                    },
+                    iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                    },
+                });
+            }).catch(error => console.log(error))
+        }
+        else {
+            toast.error("Please provide a valid email that ends with @gmail.com")
 
-            <div className='xl:mr-10'>
+        };
+    }
+    return (
+        <section className='lg:w-10/12  w-full mx-auto  flex flex-col lg:flex-row justify-center items-center min-h-[100vh] -mt-20'>
+
+            <div className='xl:mr-10 mt-20 lg:mt-0'>
                 <Lottie animationData={groovyWalkAnimation} loop='true' className='  lg:w-96 rounded-xl lg:mt-20 mt-8 lg:h-[500px] h-[300px] w-full' />
             </div>
 
@@ -63,7 +87,7 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="text" name='email' placeholder="Enter your email" className="input input-bordered" required />
+                                <input type="text" name='email' placeholder="Enter your email" className="input input-bordered" required ref={updatedEmail} />
                             </div>
                             <div className="form-control">
                                 <div className='relative'>
@@ -85,7 +109,7 @@ const Login = () => {
                                     <span className='pt-3 ml-1 text-red-600'><TbFaceIdError className='inline mb-1 text-2xl' /> {error}</span>
                                 }
                                 <label className="label">
-                                    <p className="label-text-alt link link-hover mt-3">Forgot password?</p>
+                                    <p className="label-text-alt link link-hover mt-3" onClick={handleForgotPassword}>Forgot password?</p>
                                 </label>
                                 <label className="label mt-2">
                                     <p className='label-text-alt'>

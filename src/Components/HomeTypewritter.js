@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typewriter } from 'react-simple-typewriter'
+import { TbMinusVertical } from 'react-icons/tb';
 
 const HomeTypewritter = () => {
     const handleType = (count: number) => {
@@ -19,8 +20,8 @@ const HomeTypewritter = () => {
                         words={[
                             'Meta4 learning institute is a popular institure in out state',
                             'We try to gives out best to out students',
-                            'Out many students works at many international institutes']}
-                        loop={5000000}
+                            'Our many students works at many international institutes']}
+                        loop={5000000000}
                         cursor
                         cursorStyle=' |'
                         typeSpeed={50}

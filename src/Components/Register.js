@@ -115,9 +115,6 @@ const Register = () => {
                                     error &&
                                     <span className='pt-3 ml-1 text-red-600'><TbFaceIdError className='inline mb-1 text-2xl' /> {error}</span>
                                 }
-                                <label className="label">
-                                    <p className="label-text-alt link link-hover mt-3">Forgot password?</p>
-                                </label>
                                 <label className="label mt-2">
                                     <p className='label-text-alt'>
                                         Already have an account?&nbsp;&nbsp;
