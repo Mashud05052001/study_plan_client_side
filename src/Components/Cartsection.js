@@ -14,8 +14,8 @@ const Cartsection = () => {
 
     return (
         <section className='min-h-screen mt-10'>
-            <div className='border-2 border-black/10 w-6/12 mx-auto p-5 rounded-xl shadow-2xl'>
-                <h1 className='text-4xl font-mono font-semibold text-center text-[#1b689c]'>
+            <div className='border-2 border-black/10 w-[90vw] lg:w-8/12 xl:w-6/12 mx-auto p-5 rounded-xl shadow-2xl'>
+                <h1 className='text-2xl md:text-4xl font-mono font-semibold text-center text-[#1b689c]'>
                     <span className='cartTag px-7 pb-2'>Your Selected Item</span>
                 </h1>
                 <div className="hero mt-10  bg-base-200">
