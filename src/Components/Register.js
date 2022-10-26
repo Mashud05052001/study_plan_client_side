@@ -1,30 +1,62 @@
 import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FaRegEye, FaRegEyeSlash, FaGoogle, FaGithub } from "react-icons/fa";
+import { TbFaceIdError } from "react-icons/tb";
 import { FcGoogle } from "react-icons/fc";
 import Lottie from "lottie-react";
 import groovyWalkAnimation from "../LottieAnimation/LoginAnimation3.json";
 import { AuthContext } from '../Firebase/UserContext';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
     const [showPassword1, setShowPassword1] = useState(false);
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const { user, setUser, darkMode, setDarkMode, loading, setLoading, register, googleLogin, githubLogin } = useContext(AuthContext);
+    const { setLoading, register, googleLogin, githubLogin, emailVerification, updateUserProfile } = useContext(AuthContext);
     const handleRegister = event => {
         event.preventDefault();
         const form = event.target;
-        const name = form.name.value, photo = form.photo.value, email = form.email.value,
-            password = form.password.value, confirmPassword = form.confirmPassword.value;
+        setError('');
+        const name = form.name.value;
+        const photo = form.photo.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const confirmPassword = form.confirmPassword.value;
 
+        // password validation and some condition check
+        if (password !== confirmPassword) { setError('Password Doesn\'t Matched'); return; }
+        if (password.length < 8 || password.length > 30) { setError('Password length must be 8-30 alphabet'); return; }
+        if (!/(?=.*?[A-Z])/.test(password)) { setError('Password must have 1 UpperCase Word'); return; }
+        if (!/(?=.*?[0-9])/.test(password)) { setError('Password must have 1 Digit'); return; }
+        if (!/(?=.*?[#?!@$%^&*-])/.test(password)) { setError('Password must have 1 spacial character'); return; }
+
+        const profile = { displayName: name, photoURL: photo }
+
+        register(email, password).then(result => {
+            const user = result.user;
+            // updating userProfile
+            updateUserProfile(profile).then(() => console.log("profile updated successfully")).catch(error => console.error('mahi', error));
+            if (user.emailVerified) {
+                navigate('/home');
+                form.reset();
+            }
+            else {
+                emailVerification().then(() => toast.error('At first go to your email and try to verify email, then Login'));
+
+            }
+        }).catch(err => setError(err.message)).finally(setLoading(false));
     }
+    // google registering
     const handleGoogle = () => {
         googleLogin().then(result => {
-            const user = result.user;
-            if (user.emailVerified) {
-                navigate('/courses');
-            }
-        }).catch(err => setError(err)).finally(() => setLoading(false))
+            navigate('/home');
+        }).catch(err => setError(err));
+    }
+    // github registering
+    const handleGithub = () => {
+        githubLogin().then(result => {
+            navigate('/home');
+        }).catch(err => setError(err));
     }
     return (
         <section className='lg:w-10/12  w-full mx-auto  flex flex-col lg:flex-row justify-center items-center'>
@@ -77,6 +109,10 @@ const Register = () => {
                                                 onClick={() => setShowPassword1(!showPassword1)} />
                                     }
                                 </div>
+                                {
+                                    error &&
+                                    <span className='pt-3 ml-1 text-red-600'><TbFaceIdError className='inline mb-1 text-2xl' /> {error}</span>
+                                }
                                 <label className="label">
                                     <p className="label-text-alt link link-hover mt-3">Forgot password?</p>
                                 </label>
@@ -90,7 +126,7 @@ const Register = () => {
                                     <span>Also Join with : </span>
                                     <div className='ml-4 flex'>
                                         <FcGoogle className='border-2 border-black/20 cursor-pointer hover:-translate-y-[1px] duration-200 rounded-full w-8 h-8 p-1 mx-2' onClick={handleGoogle} />
-                                        <FaGithub className='border-2 border-black/20 cursor-pointer hover:-translate-y-[1px] duration-200 rounded-full w-8 h-8 p-1 mx-2' />
+                                        <FaGithub className='border-2 border-black/20 cursor-pointer hover:-translate-y-[1px] duration-200 rounded-full w-8 h-8 p-1 mx-2' onClick={handleGithub} />
                                     </div>
                                 </div>
                             </div>
@@ -103,6 +139,7 @@ const Register = () => {
                 </form>
 
             </div>
+            <Toaster position="top-right" reverseOrder={false} />
         </section>
     );
 };
