@@ -27,10 +27,9 @@ export const router = createBrowserRouter([
                 loader: async ({ params }) => fetch(`https://study-plan-backend.vercel.app/courses/${params.id}`)
             },
             { path: '/faq', element: <Faq /> },
-            { path: '/blog', element: <Blog /> },
-            { path: '/blog', element: <Blog /> },
             {
-                path: '/blog', element: <Blog />
+                path: '/blog', element: <Blog />,
+                loader: () => fetch('answer.json')
             },
             { path: '/login', element: <Login /> },
             { path: '/register', element: <Register /> },

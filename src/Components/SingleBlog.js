@@ -5,7 +5,7 @@ const SingleBlog = ({ info }) => {
     console.log(show);
     return (
         <div className='relative border-2 border-gray-500 rounded-2xl mt-4 pt-2' >
-            <h2 className='  py-2 pl-4'><span className='pr-1 font-semibold '>Q{id}.</span>{question}
+            <h2 className='  py-2 pl-4 w-10/12' ><span className='pr-1 font-semibold '>Q{id}.</span>{question}
                 <span className='absolute right-10 cursor-pointer' onClick={() => setShow(!show)}>
                     {
                         show ? '➖' : '➕'
