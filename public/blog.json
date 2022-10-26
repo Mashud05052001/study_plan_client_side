@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "question": "What is Cors?",
+        "answer": "Cors is a node. It is used in expressJs or other backend software. Basically it gives the backend server permission to share his data. Without cores it couldnot be possible for setver to share data with any other website."
+    },
+    {
+        "id": 2,
+        "question": "Why are you using firebase? What other option do you have to implement authentication?",
+        "answer": "Firebase is a authentication system. In many website we need user information to keep the data in our database. So then we need to create authentication system. But it is not possible for a person or a small company to build a authentication system thet hackproof. So we can use firebase. For the authentication we have to use it. There are maney authentication meathods in it line password based authentication, Biometric authentication, token based authentication, google/github,facebook and so on authentication."
+    },
+    {
+        "id": 3,
+        "question": "How does the private router works?",
+        "answer": "Basically private router protect or safe a path that cannot be possible without login/registering. Just think is it possible to order a item from any website eithout knowing your any kind of informatio. No, it Doesn't. So we need to use private route to protect our soma path. If user login/register the website then it allow the user to go to the path or do something."
+    },
+    {
+        "id": 4,
+        "question": "What is node? How does the node works?",
+        "answer": "It is a basic unit of a data structure, such as a linked list or tree data structure. Node contain dara and also may link to other nodes. Links between nodes are often implement by pointers.  It is a used as backend service where javascript works on the server-side of the application. This way javascript is used on both frontend and backend. Node.js runs on chrome v8 engine which converts javascript code into machine code, it is highly scalable, lightweight, fast, and data-intensive."
+    }
+]

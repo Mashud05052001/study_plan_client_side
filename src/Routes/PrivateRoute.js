@@ -8,7 +8,7 @@ const PrivateRoute = ({ children }) => {
     const { user, loading, setLoading } = useContext(AuthContext);
 
     if (loading) {
-        return <div><Spinner /></div>
+        return <div className='-mt-[65px] w-7/12 mx-auto'><Spinner /></div>
     }
     if (user) return children;
     else {

@@ -8,7 +8,7 @@ export const AuthContext = createContext();
 const UserContext = ({ children }) => {
     const [user, setUser] = useState('');
     const [darkMode, setDarkMode] = useState(false);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
 
@@ -38,8 +38,8 @@ const UserContext = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             if (currentUser === null || currentUser.emailVerified) {
                 setUser(currentUser);
-                setLoading(false);
             }
+            setLoading(false);
         })
         return () => unSubscribe();
     }, [])
