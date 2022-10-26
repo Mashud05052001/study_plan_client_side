@@ -43,13 +43,10 @@ const Header = () => {
                 </section>
 
                 <div className={`${headerShow ?
-                    'text-sm absolute right-0 top-20 block opacity-100 duration-300 z-10  bg-gray-300 rounded-bl-2xl lg:static lg:flex items-center'
+                    'text-sm absolute right-0 top-20 block opacity-100 duration-300 z-20  bg-gray-300 rounded-bl-2xl lg:static lg:flex items-center'
                     :
                     'text-sm absolute right-0 top-20 block opacity-0 lg:opacity-100 -z-10 lg:z-10 duration-300  bg-gray-300 lg:static lg:flex items-center'
                     }`}>
-
-
-
 
 
                     <div onClick={() => setHeaderShow(false)} className='w-36 my-5 text-xl lg:text-base lg:w-auto lg:my-0 ml-8 lg:ml-0'>

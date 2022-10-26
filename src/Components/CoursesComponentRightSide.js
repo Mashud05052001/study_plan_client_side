@@ -14,7 +14,7 @@ const CoursesComponentRightSide = ({ information }) => {
                 <h1 className="text-2xl font-bold mt-3 text-center">{name}</h1>
                 <p className="mb-3 mt-1">{detailes.slice(0, 120)}...</p>
                 <Link to={`/courses/${_id}`} className='w-full'>
-                    <button className="btn  bg-[#1b689c] hover:bg-[#0d3b5a] w-full mt-3">Detailes Here</button>
+                    <button className="btn  bg-[#1b689c] hover:bg-[#0d3b5a] w-full mt-3 z-20">Detailes Here</button>
                 </Link>
             </div>
 
