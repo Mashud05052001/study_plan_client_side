@@ -4,7 +4,7 @@ import Countdown from "react-countdown";
 
 const Counting = () => {
 
-    const countDownDate = new Date('Oct 28, 2022 00:00:00').getTime();
+    const countDownDate = new Date('Nov 15, 2022 00:00:00').getTime();
 
     const x = setInterval(() => {
         let now = new Date().getTime();
