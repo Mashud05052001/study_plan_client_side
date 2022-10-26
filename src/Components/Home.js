@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import image from '../Images/homepageimg.jpg'
 import Lottie from "lottie-react";
 import { FaArrowRight } from 'react-icons/fa';
@@ -6,7 +6,10 @@ import groovyWalkAnimation from "../LottieAnimation/homeAnimation2.json";
 import { Link } from 'react-router-dom';
 import HomeTypewritter from './HomeTypewritter';
 import Counting from './Countdown';
+import { AuthContext } from '../Firebase/UserContext';
 const Home = () => {
+    const { user } = useContext(AuthContext);
+    console.log('mahi', user);
     return (
         <div className="hero min-h-[90.1vh] " style={{ backgroundImage: `url(${image})` }} >
 

@@ -35,8 +35,10 @@ const UserContext = ({ children }) => {
 
 
     useEffect(() => {
+        // currentUser?.providerData[0].providerId
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
-            if (currentUser === null || currentUser.emailVerified) {
+            console.log(currentUser?.providerData[0].providerId === 'github.com');
+            if (currentUser === null || currentUser.emailVerified || currentUser?.providerData[0].providerId === 'github.com') {
                 setUser(currentUser);
             }
             setLoading(false);

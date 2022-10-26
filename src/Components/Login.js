@@ -46,7 +46,6 @@ const Login = () => {
     const handleGithub = () => {
         githubLogin().then(result => {
             navigate(from);
-            console.log(result.user);
         }).catch(err => setError(err));
     }
     return (

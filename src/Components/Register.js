@@ -11,6 +11,8 @@ import toast, { Toaster } from 'react-hot-toast';
 const Register = () => {
     const [showPassword1, setShowPassword1] = useState(false);
     const [error, setError] = useState('');
+    const [activeRegisterBtn, setActiveRegisterBtn] = useState(false);
+    console.log(activeRegisterBtn);
     const navigate = useNavigate();
     const { setLoading, register, googleLogin, githubLogin, emailVerification, updateUserProfile } = useContext(AuthContext);
     const handleRegister = event => {
@@ -130,8 +132,16 @@ const Register = () => {
                                     </div>
                                 </div>
                             </div>
+                            <div className="form-control" >
+                                <div className="flex items-center mt-3 -mb-1 cursor-pointer" >
+                                    <input type="checkbox" className="mr-2 checkbox  checkbox-xs border-2 border-black/30"
+                                        onClick={() => setActiveRegisterBtn(!activeRegisterBtn)}
+                                    />
+                                    Accept our terms and conditions
+                                </div>
+                            </div>
                             <div className="form-control mt-3">
-                                <button type="submit" className="btn  bg-[#1b689c] hover:bg-[#0d3b5a]">Register Here</button>
+                                <button type="submit" disabled={!activeRegisterBtn} className="btn   bg-[#1b689c] hover:bg-[#0d3b5a]">Register Here</button>
 
                             </div>
                         </div>
