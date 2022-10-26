@@ -6,7 +6,7 @@ const CoursesComponentRightSide = ({ information }) => {
     const { image, name, detailes, _id } = information;
     // console.log(information);
     return (
-        <div className="single-course border-black/30 border-2 p-3 rounded-xl">
+        <div className=" border-black/25 border-2 p-3 rounded-xl ">
             <div className=' border-black p-1 rounded-xl bg-blue-200 overflow-hidden'>
                 <img src={image} className='w-full rounded-xl h-52' />
             </div>

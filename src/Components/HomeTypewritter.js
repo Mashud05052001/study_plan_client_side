@@ -18,8 +18,8 @@ const HomeTypewritter = () => {
                     {/* Style will be inherited from the parent element */}
                     <Typewriter
                         words={[
-                            'Meta4 learning institute is a popular institure in out state',
-                            'We try to gives out best to out students',
+                            'Meta4 learning institute is a popular institute in our state',
+                            'We try to gives our best to out students',
                             'Our many students works at many international institutes']}
                         loop={5000000000}
                         cursor

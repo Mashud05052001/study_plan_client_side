@@ -15,7 +15,7 @@ const Login = () => {
     const { login, googleLogin, githubLogin, emailVerification, resetPassword } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    const from = location.state?.from?.pathname || "/";
+    const from = location.state?.from?.pathname || "/home";
     //user password login
     const handleLogin = event => {
         event.preventDefault();

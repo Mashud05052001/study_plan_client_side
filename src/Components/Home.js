@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 import image from '../Images/homepageimg.jpg'
 import Lottie from "lottie-react";
-import { FaArrowRight } from 'react-icons/fa';
 import groovyWalkAnimation from "../LottieAnimation/homeAnimation2.json";
+import { FaArrowRight } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import HomeTypewritter from './HomeTypewritter';
 import Counting from './Countdown';
@@ -15,8 +15,8 @@ const Home = () => {
 
             <div className="hero-overlay bg-opacity-75"></div>
 
-            <div className="text-center text-neutral-content mt-28 lg:mt-0">
-                <h1 className='text-4xl font-[poppins]'>EnrollMent Deadline</h1>
+            <div className="text-center text-neutral-content mt-28 lg:mt-5">
+                <h1 className='text-4xl font-[poppins]'>EnrolMent Deadline</h1>
                 <div className=' py-4 flex justify-center'>
                     <Counting /></div>
                 <div className=' flex flex-col lg:-mt-20 lg:flex-row items-center lg:px-10'>
